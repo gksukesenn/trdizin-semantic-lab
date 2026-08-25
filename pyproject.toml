@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trdizin-topic-pipeline"
+version = "1.0.0"
+description = "TR Dizin 50K semantic topic discovery and hybrid search pipeline"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "matplotlib",
+  "scikit-learn",
+  "sentence-transformers==3.1.1",
+  "requests",
+  "numpy<1.27",
+  "numba==0.58.1",
+  "pynndescent==0.5.10",
+  "umap-learn==0.5.5",
+  "hdbscan==0.8.33",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: requires an external service"]

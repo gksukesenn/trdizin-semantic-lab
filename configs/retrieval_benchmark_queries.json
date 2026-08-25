@@ -1,0 +1,99 @@
+{
+  "description": "TR Dizin 50K semantic-search keşifsel retrieval benchmarkı",
+  "queries": [
+    {
+      "query_id": "Q01",
+      "query": "öğretmenlerin sınıf yönetimi becerileri",
+      "relevance_groups": [
+        ["eğitim"]
+      ]
+    },
+    {
+      "query_id": "Q02",
+      "query": "meme kanserinde tanı ve tedavi yöntemleri",
+      "relevance_groups": [
+        ["onkoloji"],
+        ["kanser"]
+      ]
+    },
+    {
+      "query_id": "Q03",
+      "query": "yapay zekânın eğitimde kullanılması",
+      "relevance_groups": [
+        ["eğitim", "yapay zeka"]
+      ]
+    },
+    {
+      "query_id": "Q04",
+      "query": "enflasyon ekonomik büyüme ve para politikası",
+      "relevance_groups": [
+        ["iktisat"],
+        ["ekonomi"]
+      ]
+    },
+    {
+      "query_id": "Q05",
+      "query": "kentlerde iklim değişikliği ve çevresel sürdürülebilirlik",
+      "relevance_groups": [
+        ["çevre"],
+        ["kentsel"],
+        ["coğrafya"]
+      ]
+    },
+    {
+      "query_id": "Q06",
+      "query": "ergenlerde depresyon kaygı ve psikolojik iyi oluş",
+      "relevance_groups": [
+        ["psikoloji"],
+        ["psikiyatri"]
+      ]
+    },
+    {
+      "query_id": "Q07",
+      "query": "tarımsal üretimde bitki hastalıkları ve verim",
+      "relevance_groups": [
+        ["ziraat"],
+        ["bitki"]
+      ]
+    },
+    {
+      "query_id": "Q08",
+      "query": "anayasa hukuku insan hakları ve temel özgürlükler",
+      "relevance_groups": [
+        ["hukuk"]
+      ]
+    },
+    {
+      "query_id": "Q09",
+      "query": "Osmanlı tarihi arşiv belgeleri ve devlet yönetimi",
+      "relevance_groups": [
+        ["tarih"],
+        ["bilgi, belge yönetimi"]
+      ]
+    },
+    {
+      "query_id": "Q10",
+      "query": "Türkçe doğal dil işleme ve metin sınıflandırma",
+      "relevance_groups": [
+        ["bilgisayar bilimleri"],
+        ["yapay zeka"]
+      ]
+    },
+    {
+      "query_id": "Q11",
+      "query": "kalp damar hastalıklarının tanı ve tedavisi",
+      "relevance_groups": [
+        ["kalp"],
+        ["kardiyoloji"],
+        ["genel ve dahili tıp"]
+      ]
+    },
+    {
+      "query_id": "Q12",
+      "query": "aşırı turizm ve turizmde sürdürülebilirlik",
+      "relevance_groups": [
+        ["turizm"]
+      ]
+    }
+  ]
+}

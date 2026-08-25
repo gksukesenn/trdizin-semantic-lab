@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>TR Dizin Semantic Explorer</title>
+
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="shell header-inner">
+
+        <div class="brand">
+            <div class="logo">TR</div>
+
+            <div>
+                <div class="brand-name">
+                    TR Dizin Semantic Explorer
+                </div>
+
+                <div class="brand-sub">
+                    50K Academic Topic Discovery
+                </div>
+            </div>
+        </div>
+
+        <div
+            id="systemStatus"
+            class="status"
+        >
+            <span class="status-dot"></span>
+            <span id="statusText">
+                Sistem kontrol ediliyor
+            </span>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <section class="hero">
+        <div class="shell">
+
+            <div class="eyebrow">
+                TÜBİTAK ULAKBİM • TR DİZİN
+            </div>
+
+            <h1>
+                50.000 akademik makalede
+                semantik keşif.
+            </h1>
+
+            <p class="hero-description">
+                Türkçe abstractlar TR-MTEB ile 768 boyutlu
+                vektörlere dönüştürüldü. HDBSCAN ile doğal konu
+                kümeleri keşfedildi ve Qdrant üzerinde gerçek
+                zamanlı semantic search altyapısı oluşturuldu.
+            </p>
+
+            <div class="metrics">
+
+                <div class="metric">
+                    <div
+                        id="articleCount"
+                        class="metric-value"
+                    >
+                        50.000
+                    </div>
+                    <div class="metric-label">
+                        Makale
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-value">
+                        768D
+                    </div>
+                    <div class="metric-label">
+                        TR-MTEB vektör boyutu
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-value">
+                        404
+                    </div>
+                    <div class="metric-label">
+                        HDBSCAN konu kümesi
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-value">
+                        Qdrant
+                    </div>
+                    <div class="metric-label">
+                        Vector search engine
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="workspace">
+        <div class="shell">
+
+            <div class="search-panel">
+
+                <div class="mode-row">
+
+                    <div class="mode-switch">
+
+                        <button
+                            id="semanticMode"
+                            class="mode-button active"
+                            type="button"
+                        >
+                            Semantic
+                        </button>
+
+                        <button
+                            id="hybridMode"
+                            class="mode-button"
+                            type="button"
+                        >
+                            Hybrid Experimental
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="modeNote"
+                        class="mode-note"
+                    >
+                        TR-MTEB abstract embedding + cosine similarity
+                    </div>
+
+                </div>
+
+                <div class="search-main">
+
+                    <input
+                        id="query"
+                        class="query-input"
+                        type="text"
+                        autocomplete="off"
+                        value="meme kanserinde tanı ve tedavi yöntemleri"
+                        placeholder="Akademik bir konu veya araştırma sorusu yazın..."
+                    >
+
+                    <button
+                        id="searchButton"
+                        class="search-button"
+                        type="button"
+                    >
+                        Ara
+                    </button>
+
+                </div>
+
+                <div class="filters">
+
+                    <div class="filter-group">
+                        <label for="yearFrom">
+                            Başlangıç yılı
+                        </label>
+
+                        <input
+                            id="yearFrom"
+                            class="filter-control"
+                            type="number"
+                            min="2008"
+                            max="2025"
+                            placeholder="2008"
+                        >
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="yearTo">
+                            Bitiş yılı
+                        </label>
+
+                        <input
+                            id="yearTo"
+                            class="filter-control"
+                            type="number"
+                            min="2008"
+                            max="2025"
+                            placeholder="2025"
+                        >
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="database">
+                            Database
+                        </label>
+
+                        <select
+                            id="database"
+                            class="filter-control"
+                        >
+                            <option value="">
+                                Tümü
+                            </option>
+                            <option value="SCIENCE">
+                                SCIENCE
+                            </option>
+                            <option value="SOCIAL">
+                                SOCIAL
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="limit">
+                            Sonuç sayısı
+                        </label>
+
+                        <select
+                            id="limit"
+                            class="filter-control"
+                        >
+                            <option value="5">
+                                5
+                            </option>
+                            <option
+                                value="10"
+                                selected
+                            >
+                                10
+                            </option>
+                            <option value="20">
+                                20
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+                id="searchInfo"
+                class="search-info"
+            >
+                Bir sorgu çalıştırın.
+            </div>
+
+            <div
+                id="results"
+                class="results"
+            ></div>
+
+        </div>
+    </section>
+
+
+    <section class="visual-section">
+        <div class="shell">
+
+            <div class="section-heading">
+                <h2>
+                    50K konu uzayı
+                </h2>
+
+                <p>
+                    UMAP yalnız görselleştirme amacıyla kullanılmıştır.
+                    Clustering işlemi 10 boyutlu UMAP uzayında
+                    gerçekleştirilmiştir.
+                </p>
+            </div>
+
+            <div class="visual-grid">
+
+                <div class="visual-card full">
+
+                    <img
+                        class="visual-image"
+                        src="/figures/umap_2d_clusters.png"
+                        alt="50 bin makalenin UMAP cluster görünümü"
+                    >
+
+                    <div class="visual-caption">
+                        <strong>
+                            Nihai konu kümeleri
+                        </strong>
+
+                        <span>
+                            Her nokta bir makaleyi, renkler nihai
+                            konu cluster atamalarını temsil eder.
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="visual-card">
+
+                    <img
+                        class="visual-image"
+                        src="/figures/umap_2d_direct_fallback.png"
+                        alt="Direct ve centroid fallback görünümü"
+                    >
+
+                    <div class="visual-caption">
+                        <strong>
+                            Direct / Centroid Fallback
+                        </strong>
+
+                        <span>
+                            HDBSCAN'in doğal yoğunluk yapısı içinde
+                            doğrudan clusterladığı noktalar ile
+                            sonradan centroid üzerinden atanan
+                            belirsiz bölgeler birlikte gösterilir.
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="visual-card">
+
+                    <img
+                        class="visual-image"
+                        src="/figures/cluster_size_distribution.png"
+                        alt="Cluster boyutu dağılımı"
+                    >
+
+                    <div class="visual-caption">
+                        <strong>
+                            Cluster boyutu dağılımı
+                        </strong>
+
+                        <span>
+                            HDBSCAN'in birkaç dev kümeye çökmediğini
+                            ve farklı büyüklüklerde alt konu yapıları
+                            ürettiğini gösterir.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<footer class="footer">
+    TR Dizin 50K Semantic Topic Discovery • Araştırma demosu
+</footer>
+
+
+<script src="/assets/js/app.js"></script>
+
+</body>
+</html>

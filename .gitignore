@@ -1,0 +1,72 @@
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+*secrets*.json
+
+# Python environments, caches and build artefacts
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Editor and OS-local files
+.DS_Store
+Thumbs.db
+.idea/
+
+# Logs, temporary files and local state
+*.log
+*.tmp
+*.temp
+*.bak
+*.bak.*
+*.swp
+tmp/
+temp/
+data/state/
+
+# Raw/private datasets and generated processed datasets
+data/raw/
+data/processed/
+data/input/
+
+# Regenerable pipeline/runtime outputs
+outputs/
+
+# Embeddings, serialized models and large numerical artefacts
+**/embeddings/
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.bin
+
+# Local databases and Docker volume data
+mongodb_data/
+redash_postgres_data/
+qdrant_experiment_data/
+qdrant_storage/
+**/mongodb_data/
+**/redash_postgres_data/
+**/qdrant_experiment_data/
+**/qdrant_storage/

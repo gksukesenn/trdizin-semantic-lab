@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Demo Web Server",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/demo/14_demo_server.py",
+      "args": ["--allow-cpu"],
+      "env": {"PYTHONPATH": "${workspaceFolder}/src"},
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Collect Articles",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/pipeline/01_collect_articles.py",
+      "env": {"PYTHONPATH": "${workspaceFolder}/src"},
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Semantic Search",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/search/07_semantic_search.py",
+      "args": ["--allow-cpu"],
+      "env": {"PYTHONPATH": "${workspaceFolder}/src"},
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Three Way Hybrid Search",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/search/13_three_way_hybrid_search.py",
+      "args": ["--allow-cpu"],
+      "env": {"PYTHONPATH": "${workspaceFolder}/src"},
+      "console": "integratedTerminal"
+    }
+  ]
+}

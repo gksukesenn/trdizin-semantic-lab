@@ -1,0 +1,124 @@
+{
+  "target_article_count": 50000,
+  "paths": {
+    "dataset": "data/processed/final_articles_50000.jsonl",
+    "checkpoint": "data/state/final_50k_checkpoint.json",
+    "pilot_dataset": "data/processed/pilot_articles_1000.jsonl",
+    "validation_dataset": "data/processed/validation_articles_5000.jsonl",
+    "embedding": "outputs/final_50k/embeddings/tr_mteb_50000.npy",
+    "embedding_metadata": "outputs/final_50k/embeddings/tr_mteb_50000_metadata.json",
+    "embedding_progress": "outputs/final_50k/embeddings/tr_mteb_50000_progress.json",
+    "output_root": "outputs/final_50k"
+  },
+  "api": {
+    "endpoint": "https://search.trdizin.gov.tr/api/defaultSearch/publication/",
+    "timeout_connect_seconds": 15,
+    "timeout_read_seconds": 75,
+    "retry_count": 5,
+    "request_delay_seconds": 0.35,
+    "page_limit": 100,
+    "pages_per_query": 30,
+    "document_type": "PAPER",
+    "publication_language": "TUR",
+    "require_abstract": true,
+    "minimum_abstract_characters": 1,
+    "years": [
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "queries": [
+      "sağlık",
+      "eğitim",
+      "bilim",
+      "toplum",
+      "ekonomi",
+      "hukuk",
+      "mühendislik",
+      "çevre",
+      "tarih",
+      "sanat",
+      "teknoloji",
+      "araştırma"
+    ]
+  },
+  "metadata_fields": [
+    "article_id",
+    "publication_year",
+    "title_tr",
+    "abstract_tr",
+    "keywords_tr",
+    "databases",
+    "subjects"
+  ],
+  "embedding": {
+    "model_id": "trmteb/turkish-embedding-model-fine-tuned",
+    "max_seq_length": 512,
+    "expected_dimension": 768,
+    "normalize_embeddings": true,
+    "require_cuda": true,
+    "batch_size_candidates": [
+      32,
+      16,
+      8,
+      4
+    ],
+    "chunk_size": 1024
+  },
+  "umap": {
+    "n_components": 10,
+    "n_neighbors": 15,
+    "min_dist": 0.0,
+    "metric": "cosine",
+    "visualization_components": 2
+  },
+  "hdbscan": {
+    "cluster_selection_method": "leaf",
+    "pilot_min_cluster_size": 10,
+    "pilot_min_samples": 5,
+    "min_cluster_size_candidates": [
+      25,
+      50,
+      100
+    ],
+    "min_samples_candidates": [
+      5,
+      10
+    ]
+  },
+  "kmeans": {
+    "n_clusters": 30,
+    "n_init": 20
+  },
+  "evaluation": {
+    "silhouette_sample_size": 5000,
+    "pair_sample_size": 20000,
+    "small_cluster_threshold": 25,
+    "large_cluster_fraction": 0.1
+  },
+  "random_seed": 42,
+  "qdrant": {
+    "url": "http://127.0.0.1:6335",
+    "collection_name": "trdizin_articles_50000",
+    "vector_size": 768,
+    "distance": "Cosine",
+    "batch_size": 128,
+    "timeout_seconds": 180,
+    "title_collection_name": "trdizin_titles_50000"
+  }
+}
